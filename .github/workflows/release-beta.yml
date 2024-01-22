@@ -1,9 +1,12 @@
-name: Release (Beta)
+name: Release (Beta) 
+  push: 
+    branches: 
+      - beta
 
 on:
   push:
     branches:
-      - main
+      - beta
   workflow_dispatch:
 
 jobs:
