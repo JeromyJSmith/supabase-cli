@@ -33,8 +33,8 @@
         "channel": "hotfix"
       },
       {
-        "name": "main",
-        "channel": "beta"
+        "name": "hotfix",
+        "channel": "hotfix"
       }
     ],
     "plugins": [
