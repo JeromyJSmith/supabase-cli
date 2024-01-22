@@ -4,7 +4,7 @@
 
 We release to stable channel every two weeks.
 
-We release to beta channel on merge to `beta` branch.
+We release to beta channel on merge to `main` branch.
 
 Hotfixes are released manually. Follow these steps:
 
@@ -33,7 +33,6 @@ We use mock objects for unit testing code that interacts with external systems, 
 Wrappers and test helper methods can be found under [internal/testing](internal/testing).
 
 Integration tests are created under [test](test). To run all tests:
-
 ```bash
 go test ./... -race -v -count=1 -failfast
 ```
