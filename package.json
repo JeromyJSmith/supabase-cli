@@ -29,6 +29,10 @@
   "release": {
     "branches": [
       {
+        "name": "hotfix",
+        "channel": "hotfix"
+      },
+      {
         "name": "+([0-9])?(.{+([0-9]),x}).x",
         "channel": "hotfix"
       },
