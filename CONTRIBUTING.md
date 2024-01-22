@@ -4,7 +4,7 @@
 
 We release to stable channel every two weeks.
 
-We release to beta channel on merge to `main` branch.
+We release to beta channel on merge to `beta` branch.
 
 Hotfixes are released manually. Follow these steps:
 
