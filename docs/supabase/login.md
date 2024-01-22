@@ -7,3 +7,4 @@ Your access token is stored securely in [native credentials storage](https://git
 > If this behavior is not desired, such as in a CI environment, you may skip login by specifying the `SUPABASE_ACCESS_TOKEN` environment variable in other commands.
 
 The Supabase CLI uses the stored token to access Management APIs for projects, functions, secrets, etc.
+> **Note:** In CI environments, you can skip the login step by specifying the `SUPABASE_ACCESS_TOKEN` environment variable in other commands.
