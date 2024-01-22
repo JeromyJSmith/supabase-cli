@@ -21,10 +21,7 @@ jobs:
       new-release-channel: ${{ steps.semantic-release.outputs.new_release_channel }}
     steps:
       - uses: actions/checkout@v4
-      - id: semantic-release
-        uses: cycjimmy/semantic-release-action@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
   goreleaser:
     name: GoReleaser
