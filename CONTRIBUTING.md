@@ -31,7 +31,6 @@ We use mock objects for unit testing code that interacts with external systems, 
 - Supabase API (via [gock](https://github.com/h2non/gock))
 
 Wrappers and test helper methods can be found under [internal/testing](internal/testing).
-
 Integration tests are created under [test](test). To run all tests:
 ```bash
 go test ./... -race -v -count=1 -failfast
