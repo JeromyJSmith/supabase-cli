@@ -4,7 +4,7 @@
 
 We release to stable channel every two weeks.
 
-We release to beta channel on merge to `main` branch.
+We release to beta channel on merge to `beta` branch.
 
 Hotfixes are released manually. Follow these steps:
 
@@ -12,7 +12,7 @@ Hotfixes are released manually. Follow these steps:
    1. If stable is on `v1.2.3` and beta is on `v1.3.6`, create `1.2.x` branch.
    2. If stable is on `v1.3.1` and beta is on `v1.3.6`, create `1.3.x` branch (or simply release all patch versions).
 2. Cherry-pick your hotfix on top of `N.N.x` branch.
-3. Run the [Release (Beta)](https://github.com/supabase/cli/actions/workflows/release-beta.yml) workflow targetting `N.N.x` branch.
+3. Run the [Release (Beta)](https://github.com/supabase/cli/actions/workflows/release-beta.yml) workflow targeting the `hotfix` branch.
 4. Verify your hotfix locally with `npx supabase@N.N.x help`
 5. Edit [GitHub releases](https://github.com/supabase/cli/releases) to set your hotfix pre-release as latest stable.
 
@@ -30,7 +30,6 @@ We use mock objects for unit testing code that interacts with external systems, 
 - Postgres database (via [pgmock](https://github.com/jackc/pgmock))
 - Supabase API (via [gock](https://github.com/h2non/gock))
 Wrappers and test helper methods can be found under [internal/testing](internal/testing).
-
 Integration tests are created under [test](test). To run all tests:
 ```bash
 go test ./... -race -v -count=1 -failfast
