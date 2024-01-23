@@ -29,11 +29,15 @@
   "release": {
     "branches": [
       {
-        "name": "release",
+        "name": "new-branch-name",
         "channel": "release"
       },
       {
         "name": "hotfix",
+        "channel": "hotfix"
+      },
+      {
+        "name": "beta",
         "channel": "hotfix"
       },
       {
