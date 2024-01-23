@@ -1,14 +1,17 @@
 name: Release (Beta)
+  push: 
+    branches: 
+      - beta
 
 on:
   push:
     branches:
-      - main
+      - beta
   workflow_dispatch:
 
 jobs:
   release:
-    name: semantic-release
+    name: semantic-release/github
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -17,11 +20,12 @@ jobs:
       new-release-version: ${{ steps.semantic-release.outputs.new_release_version }}
       new-release-channel: ${{ steps.semantic-release.outputs.new_release_channel }}
     steps:
-      - uses: actions/checkout@v4
       - id: semantic-release
         uses: cycjimmy/semantic-release-action@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tokens: "${{ secrets.GITHUB_TOKEN }}"
+
+
 
   goreleaser:
     name: GoReleaser
@@ -32,13 +36,15 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+
 
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
+
+      - name: '@semantic-release/github' plugin
+        run: npx semantic-release@^17
+        run: npx semantic-release@^17
           cache: true
 
       - uses: goreleaser/goreleaser-action@v5
@@ -46,15 +52,13 @@ jobs:
           distribution: goreleaser
           version: ~> 1
           args: release --clean
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
           BREWTAP_TOKEN: ${{ secrets.GH_PAT }}
           SCOOP_TOKEN: ${{ secrets.GH_PAT }}
           SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
 
       - run: gh release edit v${{ needs.release.outputs.new-release-version }} --draft=false --prerelease
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
   publish:
     name: Publish NPM
