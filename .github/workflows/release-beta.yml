@@ -1,7 +1,7 @@
 name: Release (Beta)
   push: 
     branches: 
-      - release
+      - main
 
 on:
   push:
@@ -20,7 +20,10 @@ jobs:
       new-release-version: ${{ steps.semantic-release.outputs.new_release_version }}
       new-release-channel: ${{ steps.semantic-release.outputs.new_release_channel }}
     steps:
-      - uses: actions/checkout@v4
+      - id: semantic-release
+        uses: cycjimmy/semantic-release-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
   goreleaser:
@@ -70,6 +73,6 @@ jobs:
           node-version: "16.x"
           registry-url: "https://registry.npmjs.org"
       - run: npm --git-tag-version=false version ${{ needs.release.outputs.new-release-version }}
-      - run: npm publish --tag release
+      - run: npm publish --tag ${{ needs.release.outputs.new-release-channel }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
