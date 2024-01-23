@@ -37,12 +37,12 @@
         "channel": "hotfix"
       },
       {
-        "name": "beta",
+        "name": "hotfix",
         "channel": "hotfix"
       },
       {
-        "name": "beta",
-        "channel": "beta"
+        "name": "hotfix",
+        "channel": "hotfix"
       }
     ],
     "plugins": [
