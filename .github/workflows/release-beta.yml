@@ -6,7 +6,7 @@ name: Release (Beta)
 on:
   push:
     branches:
-      - beta
+      - new-branch-name # Update with the correct branch name
   workflow_dispatch:
 
 jobs:
@@ -42,6 +42,9 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
+
+      - name: '@semantic-release/github' plugin
+        run: npx semantic-release@^17
           cache: true
 
       - uses: goreleaser/goreleaser-action@v5
