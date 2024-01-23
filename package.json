@@ -29,24 +29,17 @@
   "release": {
     "branches": [
       {
-        "name": "hotfix",
-        "channel": "hotfix"
+        "name": "legacy",
+        "channel": "undefined"
       },
       {
-        "name": "hotfix",
-        "channel": "hotfix"
+        "name": "beta",
+        "channel": "beta"
       },
       {
-        "name": "hotfix",
+        "name": "hotfix/*",
         "channel": "hotfix"
-      },
-      {
-        "name": "hotfix",
-        "channel": "hotfix"
-      },
-      {
-        "name": "hotfix",
-        "channel": "hotfix"
+      }
       }
     ],
     "plugins": [
