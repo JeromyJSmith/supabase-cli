@@ -29,8 +29,12 @@
   "release": {
     "branches": [
       {
-        "name": "new-branch-name",
-        "channel": "release"
+        "name": "hotfix",
+        "channel": "hotfix"
+      },
+      {
+        "name": "hotfix",
+        "channel": "hotfix"
       },
       {
         "name": "hotfix",
