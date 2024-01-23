@@ -15,6 +15,8 @@ Hotfixes are released manually. Follow these steps:
 3. Run the [Release (Beta)](https://github.com/supabase/cli/actions/workflows/release-beta.yml) workflow targeting the `hotfix` branch.
 
    Make sure the '@semantic-release/github' plugin is configured as a next step in the release workflow.
+
+   Make sure the '@semantic-release/github' plugin is configured as a next step in the release workflow.
 4. Verify your hotfix locally with `npx supabase@N.N.x help`
 5. Edit [GitHub releases](https://github.com/supabase/cli/releases) to set your hotfix pre-release as latest stable.
 
