@@ -22,6 +22,8 @@ jobs:
     steps:
       - id: semantic-release
         uses: cycjimmy/semantic-release-action@v4
+        with:
+          tokens: "${{ secrets.GITHUB_TOKEN }}"
 
 
 
@@ -34,15 +36,14 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@v4
-      #   with:
-      #     fetch-depth: 0
+
 
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
 
       - name: '@semantic-release/github' plugin
+        run: npx semantic-release@^17
         run: npx semantic-release@^17
           cache: true
 
