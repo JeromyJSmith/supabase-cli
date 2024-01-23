@@ -6,7 +6,7 @@ name: Release (Beta)
 on:
   push:
     branches:
-      - new-branch-name # Update with the correct branch name
+      - beta
   workflow_dispatch:
 
 jobs:
@@ -22,7 +22,6 @@ jobs:
     steps:
       - id: semantic-release
         uses: cycjimmy/semantic-release-action@v4
-        env:
 
 
 
@@ -52,14 +51,12 @@ jobs:
           distribution: goreleaser
           version: ~> 1
           args: release --clean
-        env:
 
           BREWTAP_TOKEN: ${{ secrets.GH_PAT }}
           SCOOP_TOKEN: ${{ secrets.GH_PAT }}
           SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
 
       - run: gh release edit v${{ needs.release.outputs.new-release-version }} --draft=false --prerelease
-        env:
 
 
   publish:
