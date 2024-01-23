@@ -29,16 +29,16 @@
   "release": {
     "branches": [
       {
-        "name": "legacy",
-        "channel": "undefined"
+        "name": "new-branch-name",
+        "channel": "release"
+      },
+      {
+        "name": "hotfix",
+        "channel": "hotfix"
       },
       {
         "name": "beta",
         "channel": "beta"
-      },
-      {
-        "name": "hotfix/*",
-        "channel": "hotfix"
       }
       }
     ],
