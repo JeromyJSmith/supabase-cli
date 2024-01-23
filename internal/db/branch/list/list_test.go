@@ -63,4 +63,30 @@ func TestListCommand(t *testing.T) {
 		// Run test
 		require.Error(t, Run(fsys, io.Discard))
 	})
+
+	t.Run("correctly lists branches when current branch file is missing", func(t *testing.T) {
+		// Setup in-memory fs without current branch
+		fsys := afero.NewMemMapFs()
+		base := filepath.Dir(utils.CurrBranchPath)
+		require.NoError(t, fsys.Mkdir(filepath.Join(base, "feature"), 0755))
+		// Run test
+		var out bytes.Buffer
+		require.NoError(t, Run(fsys, &out))
+		// Validate output
+		lines := strings.Split(out.String(), "\n")
+		assert.ElementsMatch(t, []string{
+			"  feature",
+			"",
+		}, lines)
+	})
+
+	t.Run("fails gracefully when branch directory is missing", func(t *testing.T) {
+		// Setup in-memory fs with current branch but no branch directory
+		fsys := afero.NewMemMapFs()
+		require.NoError(t, afero.WriteFile(fsys, utils.CurrBranchPath, []byte("feature"), 0644))
+		// Run test
+		err := Run(fsys, io.Discard)
+		require.Error(t, err)
+		assert.EqualError(t, err, "branches directory not found")
+	})
 }
